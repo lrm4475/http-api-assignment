@@ -52,38 +52,30 @@
       if(type === 'application/json') {
 		//parse to JSON obj
         const obj = JSON.parse(xhr.response);
-		//update page
-        if(obj.id){
-            h1.textContent = `${obj.id}`;
-        }
+        console.log(obj);
         if(obj.message){
             p.textContent = `Message: ${obj.message}`;    
         }
+        
       }
       else if (type === 'text/xml') {
-        if(xhr.responseXML.querySelector('id')){
-            const id = xhr.responseXML.querySelector('id').textContent;
-            h1.textContent = `${id}`;   
-        }
         const message = xhr.responseXML.querySelector('message').textContent; 
-          
+        console.log(message);
         p.textContent = `Message: ${message}`; 
       }
       
 	  //append the h1 and p to the content.
       content.appendChild(h1);
       content.appendChild(p);
-
-      //parse response 
-      parseJSON(xhr, content);
         
     };
 
     const sendAjax = (url, type) => {
+        console.log(url);
         const xhr = new XMLHttpRequest();
         
         xhr.open('GET', url);
-        xhr.setRequestHeader('Accept', type);
+        xhr.setRequestHeader("Accept", type);
         xhr.onload = () => handleResponse(xhr);
         
         xhr.send();
@@ -92,12 +84,15 @@
     const init = () => {
       //get desired url & type 
       const pgOption = document.querySelector('#page');
+        console.log(pgOption.value);
       const typeOption = document.querySelector('#type');
       const button = document.querySelector('#send');
         
+      console.log(pgOption.value);
+        
       const sendRequest = () => sendAjax(pgOption.value, typeOption.value);
         
-      button.addEventListener('click', sendAjax);
+      button.addEventListener('click', sendRequest);
       
     };
 

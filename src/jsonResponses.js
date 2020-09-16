@@ -24,7 +24,7 @@ const success = (request, response, acceptedTypes) => {
     return respondXML(request, response, 200, responseXML);
   }
 
-  respond(request, response, 200, respondStruct);
+  return respond(request, response, 200, respondStruct);
 };
 
 const badRequest = (request, response, acceptedTypes, params) => {
@@ -56,7 +56,7 @@ const badRequest = (request, response, acceptedTypes, params) => {
     return respondXML(request, response, 200, responseXML);
   }
 
-  respond(request, response, 200, respondStruct);
+  return respond(request, response, 200, respondStruct);
 };
 
 const unauthorized = (request, response, acceptedTypes, params) => {
@@ -88,7 +88,7 @@ const unauthorized = (request, response, acceptedTypes, params) => {
     return respondXML(request, response, 200, responseXML);
   }
 
-  respond(request, response, 200, respondStruct);
+  return respond(request, response, 200, respondStruct);
 };
 
 const forbidden = (request, response, acceptedTypes) => {
@@ -105,7 +105,7 @@ const forbidden = (request, response, acceptedTypes) => {
     return respondXML(request, response, 403, responseXML);
   }
 
-  respond(request, response, 403, respondStruct);
+  return respond(request, response, 403, respondStruct);
 };
 
 const internal = (request, response, acceptedTypes) => {
@@ -122,7 +122,7 @@ const internal = (request, response, acceptedTypes) => {
     return respondXML(request, response, 500, responseXML);
   }
 
-  respond(request, response, 500, respondStruct);
+  return respond(request, response, 500, respondStruct);
 };
 
 const notImplemented = (request, response, acceptedTypes) => {
@@ -139,7 +139,7 @@ const notImplemented = (request, response, acceptedTypes) => {
     return respondXML(request, response, 501, responseXML);
   }
 
-  respond(request, response, 501, respondStruct);
+  return respond(request, response, 501, respondStruct);
 };
 
 const notFound = (request, response, acceptedTypes) => {
@@ -156,7 +156,7 @@ const notFound = (request, response, acceptedTypes) => {
     return respondXML(request, response, 404, responseXML);
   }
 
-  respond(request, response, 404, respondStruct);
+  return respond(request, response, 404, respondStruct);
 };
 
 module.exports = {
