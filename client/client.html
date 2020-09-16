@@ -61,11 +61,12 @@
         }
       }
       else if (type === 'text/xml') {
-		const id = xhr.responseXML.querySelector('id').textContent;
+        if(xhr.responseXML.querySelector('id')){
+            const id = xhr.responseXML.querySelector('id').textContent;
+            h1.textContent = `${id}`;   
+        }
         const message = xhr.responseXML.querySelector('message').textContent; 
           
-		//add the xml fields to our html elements
-        h1.textContent = `${id}`;
         p.textContent = `Message: ${message}`; 
       }
       

@@ -26,10 +26,8 @@ const onRequest = (request, response) => {
   const params = query.parse(parsedUrl.query);
   const acceptedTypes = request.headers.accept.split(',');
 
-  if (!urlStruct[parsedUrl.pathname] === '/badRequest' && !urlStruct[parsedUrl.pathname] === '/unauthorized') {
-    urlStruct[parsedUrl.pathname](request, response, acceptedTypes);
-  } else if (urlStruct[parsedUrl.pathname] === '/badRequest' || urlStruct[parsedUrl.pathname] === '/unauthorized') {
-    urlStruct[parsedUrl.pathname](request, response, params, acceptedTypes);
+  if (urlStruct[parsedUrl.pathname]) {
+    urlStruct[parsedUrl.pathname](request, response, acceptedTypes, params);
   } else {
     urlStruct.notFound(request, response, acceptedTypes);
   }
